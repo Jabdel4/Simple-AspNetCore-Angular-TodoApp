@@ -7,7 +7,7 @@ trigger:
         - feature/todo-api
     paths:
         include:
-        - pipelines/build-api.yml
+        - pipelines/builds/build-api.yml
         - TodoApi/*
         exclude:
         - /*.md
