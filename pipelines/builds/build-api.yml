@@ -19,7 +19,7 @@ variables:
 
 jobs:
 - job: BuildAPI
-  displayname: 'Build the API'
+  displayName: 'Build the API'
   pool:
     vmImage: $(vmImage)
   steps:
