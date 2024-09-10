@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface ToDoItem {
+export interface TodoItem {
   id: number;
   task: string;
   isCompleted: boolean;
@@ -16,15 +16,15 @@ export class TodoService {
 
   constructor(private http: HttpClient) { }
 
-  getTodos(): Observable<ToDoItem[]> {
-    return this.http.get<ToDoItem[]>(this.apiUrl);
+  getTodos(): Observable<TodoItem[]> {
+    return this.http.get<TodoItem[]>(this.apiUrl);
   }
 
-  addTodo(todo: ToDoItem): Observable<ToDoItem> {
-    return this.http.post<ToDoItem>(this.apiUrl, todo);
+  addTodo(todo: TodoItem): Observable<TodoItem> {
+    return this.http.post<TodoItem>(this.apiUrl, todo);
   }
 
-  updateTodo(todo: ToDoItem): Observable<void> {
+  updateTodo(todo: TodoItem): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/${todo.id}`, todo);
   }
 
