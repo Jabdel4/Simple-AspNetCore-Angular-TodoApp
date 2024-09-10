@@ -47,8 +47,8 @@ jobs:
       rootFolderOrFile: 'TodoAppClient/dist'
       includeRootFolder: false
       archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/Client.zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/client.zip'
       replaceExistingArchive: true
-  - publish: '$(Build.ArtifactStagingDirectory)/Client.zip'
+  - publish: '$(Build.ArtifactStagingDirectory)/client.zip'
     displayName: Publish
     artifact: client
