@@ -48,4 +48,10 @@ jobs:
         zipAfterPublish: true
     - publish: $(Build.ArtifactStagingDirectory)
       displayName: 'Publish artifact'
-      artifact: api    
+      artifact: api
+    - task: NuGetCommand@2
+      displayName: 'Publish to Azure Artifacts'
+      inputs:
+        command: 'push'
+        nuGetFeedType: 'internal'
+        publishVstsFeed: 'DevOps Projects/Todo.App.Feeds'
