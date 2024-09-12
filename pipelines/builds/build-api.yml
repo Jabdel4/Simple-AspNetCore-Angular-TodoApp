@@ -39,6 +39,12 @@ jobs:
         command: build
         projects: '**/*.csproj'
     - task: DotNetCoreCLI@2
+      inputs:
+        command: 'test'
+        projects: '**/*.csproj'
+        testRunTitle: 'CodeCoverageRun'
+        workingDirectory: '$(System.DefaultWorkingDirectory)'
+    - task: DotNetCoreCLI@2
       displayName: 'Publish project'
       inputs:
         command: publish
