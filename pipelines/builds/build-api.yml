@@ -42,8 +42,14 @@ jobs:
       inputs:
         command: 'test'
         projects: '**/*.csproj'
+        arguments: '--logger trx --collect "Code Coverage"'
         testRunTitle: 'CodeCoverageRun'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/*.trx'
+        testRunTitle: 'CodeCoverageTests'
     - task: DotNetCoreCLI@2
       displayName: 'Publish project'
       inputs:
