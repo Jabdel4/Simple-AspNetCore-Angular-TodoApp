@@ -1,0 +1,33 @@
+parameters:
+- name: azServiceConnection
+  type: string
+  default: ''
+
+stages:
+- stage: RESOURCES
+  jobs:
+  - job: Infra
+    displayName: 'Azure Provisioning'
+    steps:
+        - task: AzureResourceManagerTemplateDeployment@3
+          inputs:
+            deploymentScope: "Resource Group"
+            azureResourceManagerConnection: "${{ parameters.azServiceConnection }}"
+            action: "Create Or Update Resource Group"
+            resourceGroupName: "$(resourceGroupName)"
+            location: "$(location)"
+            templateLocation: "Linked artifact"
+            csmFile: "$(templateFilePath)"
+            csmParametersFile: "$(templateParametersFilePath)"
+            deploymentMode: "Incremental"
+            deploymentName: "DeployPipelineTemplate"
+- stage: APP
+  dependsOn: RESOURCES
+  condition: onSucceeded()
+  displayName: 'Deploy the App on the App Service'
+  jobs:
+  - job: Deploy
+    displayName: 'Artifact to App Service'
+    steps:
+        - task:
+      

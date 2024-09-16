@@ -1,0 +1,32 @@
+jobs:
+- job:
+  displayName: 'Build the API'
+  pool:
+    vmImage: $(vmImage)
+  steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk 8.0'
+      inputs:
+        packageType: 'sdk'
+        version: '8.0.x'
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore project'
+      inputs:
+        command: restore
+        projects: '**/*.csproj'
+    - task: DotNetCoreCLI@2
+      displayName: 'Build project'
+      inputs:
+        command: build
+        projects: '**/*.csproj'
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish project'
+      inputs:
+        command: publish
+        projects: '**/*.csproj'
+        nobuild: true
+        arguments: '--configuration $(configuration) /p:DontGenerateSwagger=True --output $(Build.ArtifactStagingDirectory)'
+        zipAfterPublish: true
+    - publish: $(Build.ArtifactStagingDirectory)
+      displayName: 'Publish artifact'
+      artifact: api
