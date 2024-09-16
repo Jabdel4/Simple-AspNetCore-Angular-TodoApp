@@ -1,0 +1,20 @@
+name: release-api
+
+trigger:
+    batch: true
+    branches:
+        include:
+        - feature/todo-api
+        - main
+    paths:
+        include:
+        - pipelines/releases/release-api.yml
+        - pipelines/infra/api.resources.yml
+
+variables:
+- templates: ../variables/variables.yml
+
+stages:
+- template: ../templates/release-api-template.yml
+  parameters:
+    azServiceConnection: ''
