@@ -6,7 +6,7 @@ trigger:
   branches:
     include:
     - main
-    - feature/todo-client
+    #- feature/todo-client
   paths:
     include:
     - pipelines/builds/build-client.yml

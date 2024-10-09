@@ -4,11 +4,12 @@ trigger:
     batch: true
     branches:
         include:
-        - feature/todo-api
+        - main
+        #- feature/todo-api
     paths:
         include:
         - pipelines/builds/build-api.yml
-        - TodoApi/*
+        - TodoAppBackend/*
         exclude:
         - /*.md
         - /*.gitignore
