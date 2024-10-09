@@ -1,0 +1,11 @@
+variables:
+    configuration: Release
+    vmImage: windows-latest    
+    system.debug: true
+    prefix: todo
+    suffix: $(Build.BuildId)
+    location: southafricanorth
+    workingDir: $(System.DefaultWorkingDirectory)
+    templateFilePath: '$(workingDir)/infra/api.resources.bicep'
+    templateParametersFilePath: '$(workingDir)/infra/api.resources.bicepparam'
+    resourceGroupName: $(prefix)-rg-$(suffix)

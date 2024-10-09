@@ -1,9 +1,8 @@
-# Status
+# ASP.NET Core Todo App with CI/CD Azure Pipelines
 
+This project is an exhibition for me to learn how to design and implement CI/CD pipelines using Azure Pipelines and a simple ToDo App.
 
-- Client Build Status: [![Build Status](https://dev.azure.com/jbootcamp/DevOps%20Project/_apis/build/status%2FGithub%2FJabdel4.TodoApp.Build.Client?branchName=feature%2Ftodo-client)](https://dev.azure.com/jbootcamp/DevOps%20Project/_build/latest?definitionId=6&branchName=feature%2Ftodo-client)
-- Client Release Status: 
+In addition, to learn how to use Git commands (pull, push, checkout, init, merge, etc.).
 
-# Link up with me ?
-
-Let's connect on [LinkedIn](https://linkedin.com/in/joris-alima) and [GitHub](https://github.com/Jabdel4/) :)
+- API Build Status: [![Build Status](https://dev.azure.com/jbootcamp/DevOps%20Project/_apis/build/status%2FGithub%2FJabdel4.Simple-AspNetCore-Angular-TodoApp.Build-api?branchName=feature%2Ftodo-api)](https://dev.azure.com/jbootcamp/DevOps%20Project/_build/latest?definitionId=5&branchName=feature%2Ftodo-api)
+- API Release Status:
