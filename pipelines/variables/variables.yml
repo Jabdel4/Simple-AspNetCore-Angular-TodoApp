@@ -6,6 +6,7 @@ variables:
     suffix: $(Build.BuildId)
     location: southafricanorth
     workingDir: $(System.DefaultWorkingDirectory)
-    templateFilePath: '$(workingDir)/pipelines/infra/api.resources.bicep'
-    templateParametersFilePath: '$(workingDir)/pipelines/infra/api.resources.bicepparam'
+    templateFilePath: '$(workingDir)/pipelines/infra/resources.bicep'
+    templateParametersFilePath: '$(workingDir)/pipelines/infra/resources.bicepparam'
+
     resourceGroupName: $(prefix)-rg-$(suffix)
