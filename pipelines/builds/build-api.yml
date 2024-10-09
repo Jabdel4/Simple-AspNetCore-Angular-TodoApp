@@ -18,4 +18,4 @@ variables:
 - template: ../variables/variables.yml
 
 jobs:
-- template: ../templates/build-template.yml
+- template: ../templates/build-api-template.yml
