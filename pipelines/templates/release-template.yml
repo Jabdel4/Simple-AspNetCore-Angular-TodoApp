@@ -22,12 +22,14 @@ stages:
             deploymentMode: "Incremental"
             deploymentName: "DeployPipelineTemplate"
 - stage: APP
-  dependsOn: RESOURCES
-  condition: onSucceeded()
-  displayName: 'Deploy the App on the App Service'
+  condition: onSucceeded('RESOURCES')
   jobs:
-  - job: Deploy
-    displayName: 'Artifact to App Service'
+  - job: API
+    displayName: 'Deploy the API'
     steps:
         - task:
+  - job: CLIENT
+    displayName: 'Deploy the Client'
+    steps:
+      - task:
       

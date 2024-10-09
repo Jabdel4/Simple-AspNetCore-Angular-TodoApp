@@ -1,0 +1,21 @@
+name: release-app
+
+trigger:
+    batch: true
+    # branches:
+    #     include:
+    #     - main
+    paths:
+        include:
+        - pipelines/releases/release.yml
+        - pipelines/infra/resources.bicep
+        - pipelines/infra/resources.bicepparam
+
+variables:
+- templates: ../variables/variables.yml
+- group: serviceConnections
+
+stages:
+- template: ../templates/release-template.yml
+  parameters:
+    azServiceConnection: '$(azServiceConnection)' # Value is in the variable group
