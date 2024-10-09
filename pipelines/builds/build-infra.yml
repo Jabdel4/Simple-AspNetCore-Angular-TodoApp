@@ -1,0 +1,19 @@
+name: build-infra
+
+trigger:
+   batch: true
+   paths:
+       include:
+       - pipelines/infra/*
+       - pipelines/build-infra.yml
+
+pool:
+   vmImage: $(vmImage)
+
+variables:
+- template: ../variables/variables.yml
+
+steps:
+   - publish: $(workingDir)/pipelines/infra
+     displayName: 'Publish bicep'
+     artifact: resources
