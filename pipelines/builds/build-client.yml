@@ -1,0 +1,54 @@
+name: build-client
+
+
+trigger:
+  batch: true
+  branches:
+    include:
+    - main
+    - feature/todo-client
+  paths:
+    include:
+    - pipelines/builds/build-client.yml
+    - TodoAppClient/*
+    exclude:
+    - README.md
+    - .gitignore
+
+variables:
+    vmImage: 'ubuntu-latest'
+
+jobs:
+- job: Client
+  displayName: Build & Package client
+  pool:
+   vmImage: '$(vmImage)'
+  steps:
+  - task: NodeTool@0
+    displayName: 'Install NodeJS'
+    inputs:
+      versionSpec: '18.x'
+  - script: |
+      rm -rf $(System.DefaultWorkingDirectory)/node_modules
+      npm cache clear --force
+  - task: Npm@1
+    displayName: 'Install packages'
+    inputs:
+      command: 'install'
+      workingDir: TodoAppClient
+  - task: Npm@1
+    displayName: 'Build'
+    inputs:
+      command: custom
+      customCommand: run build
+      workingDir: TodoAppClient
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: 'TodoAppClient/dist'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/client.zip'
+      replaceExistingArchive: true
+  - publish: '$(Build.ArtifactStagingDirectory)/client.zip'
+    displayName: Publish
+    artifact: client
