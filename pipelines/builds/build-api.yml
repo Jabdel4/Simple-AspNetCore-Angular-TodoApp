@@ -15,7 +15,7 @@ trigger:
         - /*.gitignore
 
 variables:
-- template: ../variables.yml
+- template: ../variables/variables.yml
 
 jobs:
 - template: ../templates/build-template.yml
