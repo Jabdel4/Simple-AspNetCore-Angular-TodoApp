@@ -1,1 +1,0 @@
-using 'api.resources.bicep'
