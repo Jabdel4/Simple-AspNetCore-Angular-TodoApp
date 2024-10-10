@@ -12,10 +12,10 @@ param sku  = 'F1' // The SKU of App Service Plan
   'node|20-lts',
   'node|19-lts',
   'node|18-lts',
-  'node|17-lts,
-  'node|16-lts,
-  'node|15-lts,
-  'node|14-lts,
+  'node|17-lts',
+  'node|16-lts',
+  'node|15-lts',
+  'node|14-lts',
 ])
 param clientLinuxFxVersion  = 'node|18-lts' // The runtime stack of client web app
 
