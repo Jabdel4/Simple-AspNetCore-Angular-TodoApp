@@ -17,15 +17,6 @@ stages:
             project: 'DevOps Project'
             definition: 7
             buildVersionToDownload: 'latest'
-        - task: ManualValidation@0
-          displayName: 'Manual Validation'
-          inputs:
-            notifyUsers: |
-                jorisbootcamp@outlook.com
-                jobalos95@outlook.com
-            instructions: 'Please. Ensure that the Azure Subscription is ready before deployment into the resource group $(resourceGroupName)'
-            timeoutInMinutes: 15
-            onTimeout: 'reject'
         - task: AzureResourceManagerTemplateDeployment@3
           displayName: 'Provision Azure'
           inputs:
@@ -39,6 +30,20 @@ stages:
             csmParametersFile: "$(templateParametersFilePath)"
             deploymentMode: "Incremental"
             deploymentName: "DeployPipelineTemplate"
+  - job: manualValidation
+    displayName: 'Wait for Manual Validation'
+    pool: server
+    timeoutInMinutes: 60
+    steps:
+        - task: ManualValidation@0
+          displayName: 'Manual Validation'
+          inputs:
+            notifyUsers: |
+                jorisbootcamp@outlook.com
+                jobalos95@outlook.com
+            instructions: 'Please. Ensure that resources provisioning in $(resourceGroupName) is done, and ready to host the apps.'
+            timeoutInMinutes: 30
+            onTimeout: 'reject'
 # - stage: APP
 #   condition: onSucceeded('RESOURCES')
 #   jobs:
