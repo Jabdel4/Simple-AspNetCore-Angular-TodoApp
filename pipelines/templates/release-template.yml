@@ -7,9 +7,18 @@ stages:
 - stage: RESOURCES
   jobs:
   - job: Infra
-    displayName: 'Azure Provisioning'
     steps:
+        - task: DownloadPipelineArtifact@2
+          displayName: 'Download Bicep Resources'
+          inputs:
+            buildType: 'specific'
+            artifactName: 'resources'
+            targetPath: $(Pipeline.Workspace)
+            project: 'DevOps Project'
+            definition: 7
+            buildVersionToDownload: 'latest'
         - task: AzureResourceManagerTemplateDeployment@3
+          displayName: 'Provision Azure'
           inputs:
             deploymentScope: "Resource Group"
             azureResourceManagerConnection: "${{ parameters.azServiceConnection }}"
@@ -21,15 +30,15 @@ stages:
             csmParametersFile: "$(templateParametersFilePath)"
             deploymentMode: "Incremental"
             deploymentName: "DeployPipelineTemplate"
-- stage: APP
-  condition: onSucceeded('RESOURCES')
-  jobs:
-  - job: API
-    displayName: 'Deploy the API'
-    steps:
-        - task:
-  - job: CLIENT
-    displayName: 'Deploy the Client'
-    steps:
-      - task:
+# - stage: APP
+#   condition: onSucceeded('RESOURCES')
+#   jobs:
+#   - job: API
+#     displayName: 'Deploy the API'
+#     steps:
+#         - task:
+#   - job: CLIENT
+#     displayName: 'Deploy the Client'
+#     steps:
+#       - task:
       
