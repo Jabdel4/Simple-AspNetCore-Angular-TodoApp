@@ -1,0 +1,15 @@
+name: deleteResources
+
+trigger: none
+
+variables:
+- template: ../variables/variables.yml
+- group: serviceConnections
+
+pool:
+    vmImage: $(vmImage)
+
+steps:
+- template: ../templates/undeploy-template.yml
+  parameters:
+    azServiceConnection: $(azServiceConnection)  

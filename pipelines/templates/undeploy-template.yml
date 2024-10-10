@@ -1,0 +1,13 @@
+parameters:
+- name: azServiceConnection
+  type: string
+  default: ''
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Delete provisioned resources'
+  inputs:
+    azureSubscription: <Name of the Azure Resource Manager service connection>
+    scriptType: ps
+    scriptLocation: inlineScript
+    inlineScript: az group delete --name $(resourceGroupName) --yes      

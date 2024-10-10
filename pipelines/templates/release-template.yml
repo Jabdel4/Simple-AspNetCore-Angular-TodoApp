@@ -7,6 +7,7 @@ stages:
 - stage: RESOURCES
   jobs:
   - job: Infra
+    displayName: 'Azure Provisioning'
     steps:
         - task: DownloadPipelineArtifact@2
           displayName: 'Download Bicep Resources'
