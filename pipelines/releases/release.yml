@@ -10,7 +10,7 @@ trigger:
         - pipelines/templates/release-template.yml
 
 variables:
-- templates: ../variables/variables.yml
+- template: ../variables/variables.yml
 - group: serviceConnections
 
 stages:
