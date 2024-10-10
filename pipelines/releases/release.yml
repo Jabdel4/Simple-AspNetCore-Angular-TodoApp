@@ -7,7 +7,7 @@ trigger:
     #     - main
     paths:
         include:
-        - pipelines/releases/release.yml
+        - pipelines/templates/release-template.yml
 
 variables:
 - templates: ../variables/variables.yml
