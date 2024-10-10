@@ -8,8 +8,6 @@ trigger:
     paths:
         include:
         - pipelines/releases/release.yml
-        - pipelines/infra/resources.bicep
-        - pipelines/infra/resources.bicepparam
 
 variables:
 - templates: ../variables/variables.yml
