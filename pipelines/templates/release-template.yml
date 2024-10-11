@@ -32,7 +32,7 @@ stages:
             deploymentMode: "Incremental"
             deploymentName: "DeployPipelineTemplate"
   - job: manualValidation
-    condition: succeeded('Infra')
+    dependsOn: Infra
     displayName: 'Wait for Manual Validation'
     pool: server
     timeoutInMinutes: 60
