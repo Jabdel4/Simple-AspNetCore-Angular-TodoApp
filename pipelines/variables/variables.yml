@@ -1,12 +1,11 @@
 variables:
     configuration: Release
-    vmImage: windows-latest    
+    vmImage: ubuntu-latest    
     system.debug: true
     prefix: todo
-    suffix: $(Build.BuildId)
+    #suffix: $(Build.BuildId)
     location: southafricanorth
     workingDir: $(System.DefaultWorkingDirectory)
     templateFilePath: '$(workingDir)/pipelines/infra/resources.bicep'
     templateParametersFilePath: '$(workingDir)/pipelines/infra/resources.bicepparam'
-
-    resourceGroupName: $(prefix)-rg-$(suffix)
+    resourceGroupName: $(prefix)-rg
