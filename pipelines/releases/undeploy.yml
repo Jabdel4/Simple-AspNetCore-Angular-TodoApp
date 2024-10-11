@@ -11,5 +11,5 @@ pool:
 
 steps:
 - template: ../templates/undeploy-template.yml
-  parameters:
-    azServiceConnection: '$(azServiceConnection)'
+  # parameters:
+  #   azServiceConnection: '$(azServiceConnection)'
