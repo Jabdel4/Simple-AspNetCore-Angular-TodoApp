@@ -1,7 +1,7 @@
-parameters:
-- name: azServiceConnection
-  type: string
-  default: ''
+# parameters:
+# - name: azServiceConnection
+#   type: string
+#   default: ''
 
 stages:
 - stage: RESOURCES
@@ -22,7 +22,7 @@ stages:
           displayName: 'Provision Azure'
           inputs:
             deploymentScope: "Resource Group"
-            azureResourceManagerConnection: "${{ parameters.azServiceConnection }}"
+            azureResourceManagerConnection: '$(azServiceConnection)'
             action: "Create Or Update Resource Group"
             resourceGroupName: "$(resourceGroupName)"
             location: "$(location)"

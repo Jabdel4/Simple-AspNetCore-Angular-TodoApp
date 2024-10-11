@@ -15,5 +15,5 @@ variables:
 
 stages:
 - template: ../templates/release-template.yml
-  parameters:
-    azServiceConnection: '$(azServiceConnection)' # Value is in the variable group
+  # parameters:
+  #   azServiceConnection: '$(azServiceConnection)' # Value is in the variable group
