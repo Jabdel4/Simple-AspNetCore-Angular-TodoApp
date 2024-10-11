@@ -1,4 +1,4 @@
-name: release-app
+name: release-infra
 
 trigger:
     batch: true
@@ -7,13 +7,13 @@ trigger:
     #     - main
     paths:
         include:
-        - pipelines/templates/release-template.yml
+        - pipelines/templates/release-infra-template.yml
 
 variables:
 - template: ../variables/variables.yml
 - group: serviceConnections
 
 stages:
-- template: ../templates/release-template.yml
+- template: ../templates/release-infra-template.yml
   # parameters:
   #   azServiceConnection: '$(azServiceConnection)' # Value is in the variable group
