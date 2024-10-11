@@ -43,5 +43,14 @@ param apiWebSiteName = toLower('api-wapp-${prefix}')
 
 param appServicePlanName = toLower('ASP-${prefix}')
 
+@description('Name of the workspace where the data will be stored.')
+param workspaceName = 'wks-${prefix}'
+
+@description('Names of the application insights resource.')
+param clientApplicationInsightsName = toLower('${prefix}-client-appi')
+
+param apiApplicationInsightsName = toLower('${prefix}-api-appi')
+
+
 var prefix = 'todoApp'
 
