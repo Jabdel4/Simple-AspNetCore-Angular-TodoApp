@@ -2,9 +2,9 @@ name: release-infra
 
 trigger:
     batch: true
-    # branches:
-    #     include:
-    #     - main
+    branches:
+        include:
+        - main
     paths:
         include:
         - pipelines/templates/release-infra-template.yml
@@ -13,7 +13,7 @@ variables:
 - template: ../variables/variables.yml
 - group: serviceConnections
 
-stages:
+jobs:
 - template: ../templates/release-infra-template.yml
   # parameters:
   #   azServiceConnection: '$(azServiceConnection)' # Value is in the variable group

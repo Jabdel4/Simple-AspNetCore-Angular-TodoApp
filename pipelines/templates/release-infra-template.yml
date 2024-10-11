@@ -3,8 +3,6 @@
 #   type: string
 #   default: ''
 
-stages:
-- stage: RESOURCES
   jobs:
   - job: manualValidation
     displayName: 'Wait for Manual Validation'
