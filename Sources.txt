@@ -1,0 +1,6 @@
+https://github.com/Azure/bicep/discussions/2641
+https://learn.microsoft.com/en-us/azure/azure-monitor/app/codeless-app-service?tabs=net#automate-the-creation-of-an-application-insights-resource-and-link-to-your-newly-created-app-service
+https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/manual-intervention-v8?view=azure-pipelines
+https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/manual-validation-v0?view=azure-pipelines
+https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations
+https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/resource-dependencies
