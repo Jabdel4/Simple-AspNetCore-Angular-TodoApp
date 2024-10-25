@@ -9,8 +9,6 @@ using 'resources.bicep'
 param sku  = 'F1' // The SKU of App Service Plan
 
 @allowed([
-  'node|20-lts',
-  'node|19-lts',
   'node|18-lts',
   'node|17-lts',
   'node|16-lts',
