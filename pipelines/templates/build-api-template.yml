@@ -27,6 +27,6 @@ jobs:
         nobuild: true
         arguments: '--configuration $(configuration) /p:DontGenerateSwagger=True --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: true
-    - publish: $(Build.ArtifactStagingDirectory)/api.zip
+    - publish: $(Build.ArtifactStagingDirectory)/
       displayName: 'Publish artifact'
       artifact: api
