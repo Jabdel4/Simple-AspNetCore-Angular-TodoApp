@@ -6,3 +6,7 @@ https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-bes
 https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/resource-dependencies
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/conditions?view=azure-devops
 https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/?view=azure-pipelines
+https://learn.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#dependencies
+https://stackoverflow.com/questions/76892524/how-to-avoid-the-pipeline-must-contain-at-least-one-job-with-no-dependencies-e
+https://learn.microsoft.com/en-us/azure/devops/pipelines/process/deployment-jobs?view=azure-devops
+
