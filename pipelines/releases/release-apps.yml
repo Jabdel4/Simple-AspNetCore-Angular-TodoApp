@@ -1,5 +1,11 @@
 name: release-apps
 
+resources:
+    pipelines:
+    - pipeline: apps-resources
+      source: Jabdel4.TodoApp.Build.Apps
+    
+
 trigger:
     batch: true
     branches:
@@ -10,6 +16,7 @@ trigger:
         - TodoAppBackend/*
         - TodoAppClient/*
         - pipelines/templates/release-apps-template.yml
+        - pipelines/releases/release-apps.yml
 
 variables:
 - template: ../variables/variables.yml
