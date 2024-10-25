@@ -9,7 +9,7 @@ trigger:
   #   #- feature/todo-client
   paths:
     include:
-    - pipelines/builds/build-client.yml
+    - pipelines/builds/build-client-template.yml
     - TodoAppClient/*
     exclude:
     - README.md
