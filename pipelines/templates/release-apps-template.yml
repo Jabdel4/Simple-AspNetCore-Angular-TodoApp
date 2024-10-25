@@ -1,6 +1,5 @@
 jobs:
   - job: manualValidation
-    dependsOn: Artifacts
     displayName: 'Wait for Manual Validation'
     pool: server
     timeoutInMinutes: 15
