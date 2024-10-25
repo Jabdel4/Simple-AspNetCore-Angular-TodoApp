@@ -1,3 +1,12 @@
+parameters:
+- name: env
+  type: string
+  default: dev
+  values:
+  - dev
+  - qa
+  - prod
+
 jobs:
   - job: manualValidation
     displayName: 'Wait for Manual Validation'
@@ -19,6 +28,7 @@ jobs:
     dependsOn: manualValidation
     pool:
         vmImage: $(vmImage)
+    environment: todoapp-${{ parameters.env }}
     strategy:
         runOnce:
             deploy:

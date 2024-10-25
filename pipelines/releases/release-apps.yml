@@ -24,3 +24,11 @@ variables:
 
 jobs:
 - template: ../templates/release-apps-template.yml
+#   parameters:
+#     env: 'dev'
+# - template: ../templates/release-apps-template.yml
+#   parameters:
+#     env: 'qa'
+# - template: ../templates/release-apps-template.yml
+#   parameters:
+#     env: 'prod'
