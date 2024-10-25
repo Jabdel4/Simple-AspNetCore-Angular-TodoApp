@@ -1,0 +1,48 @@
+jobs:
+  - job: Artifacts
+    displayName: 'Download Artifacts'
+    pool:
+        vmImage:($vmImage)
+    steps:
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Client artifact'
+      inputs:
+        buildType: 'specific'
+        project: '4eb0d06e-cb70-453b-8722-6c23f0ef15d7'
+        definition: '6'
+        buildVersionToDownload: 'latest'
+        artifactName: 'client'
+        targetPath: '$(Pipeline.Workspace)/client'    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Api artifact'
+      inputs:
+        buildType: 'specific'
+        project: '4eb0d06e-cb70-453b-8722-6c23f0ef15d7'
+        definition: '5'
+        buildVersionToDownload: 'latest'
+        artifactName: 'api'
+        targetPath: '$(Pipeline.Workspace)/api'
+
+  - job: manualValidation
+    dependsOn: Artifacts
+    displayName: 'Wait for Manual Validation'
+    pool: server
+    timeoutInMinutes: 15
+    steps:
+        - task: ManualValidation@0
+          displayName: 'Manual Validation'
+          inputs:
+            notifyUsers: |
+                jorisbootcamp@outlook.com
+                jobalos95@outlook.com
+            instructions: 'Do we need to deploy ?'
+            timeoutInMinutes: 5
+            onTimeout: 'reject'
+
+  - job: deployArtifactsToAppService
+    displayName: 'Artifacts to App Services'
+    dependsOn: manualValidation
+    pool:
+        vmImage: ($vmImage)
+    steps:
+        -

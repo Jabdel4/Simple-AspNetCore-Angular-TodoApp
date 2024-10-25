@@ -1,0 +1,19 @@
+name: release-apps
+
+trigger:
+    batch: true
+    branches:
+        include:
+        - main
+    paths:
+        include:
+        - TodoAppBackend/*
+        - TodoAppClient/*
+        - pipelines/templates/release-apps-template.yml
+
+variables:
+- template: ../variables/variables.yml
+- group: serviceConnections
+
+jobs:
+- template: ../templates/release-apps-template.yml
