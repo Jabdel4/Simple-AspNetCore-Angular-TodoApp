@@ -4,19 +4,9 @@ resources:
     pipelines:
     - pipeline: apps-resources
       source: Jabdel4.TodoApp.Build.Apps
+      trigger: true # To trigger a run when any run of the referenced pipeline completes
     
-
-trigger:
-    batch: true
-    branches:
-        include:
-        - main
-    paths:
-        include:
-        - TodoAppBackend/*
-        - TodoAppClient/*
-        - pipelines/templates/release-apps-template.yml
-        - pipelines/releases/release-apps.yml
+trigger: none
 
 variables:
 - template: ../variables/variables.yml
