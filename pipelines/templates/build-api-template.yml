@@ -5,10 +5,10 @@ jobs:
     vmImage: $(vmImage)
   steps:
     - task: UseDotNet@2
-      displayName: 'Use .NET Core sdk 7.0'
+      displayName: 'Use .NET Core sdk 8.0'
       inputs:
         packageType: 'sdk'
-        version: '7.0.x'
+        version: '8.0.x'
     - task: DotNetCoreCLI@2
       displayName: 'Restore project'
       inputs:
