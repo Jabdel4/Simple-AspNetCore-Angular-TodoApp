@@ -18,10 +18,10 @@ variables:
 jobs:
 - template: ../templates/release-apps-template.yml
   parameters:
-    env: ''
-# - template: ../templates/release-apps-template.yml
-#   parameters:
-#     env: 'qa'
-# - template: ../templates/release-apps-template.yml
-#   parameters:
-#     env: 'prod'
+    env: 'dev'
+- template: ../templates/release-apps-template.yml
+  parameters:
+    env: 'qa'
+- template: ../templates/release-apps-template.yml
+  parameters:
+    env: 'prod'
