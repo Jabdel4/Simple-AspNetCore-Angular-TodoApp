@@ -21,6 +21,8 @@
   - job: Infra
     displayName: 'Azure Provisioning'
     dependsOn: manualValidation
+    pool:
+        vmImage: $(vmImage)
     steps:
         - task: DownloadPipelineArtifact@2
           displayName: 'Download Bicep Resources'
