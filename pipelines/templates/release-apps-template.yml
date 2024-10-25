@@ -8,7 +8,7 @@ parameters:
   - prod
 
 jobs:
-  - job: manualValidation
+  - job:
     displayName: 'Wait for Manual Validation'
     pool: server
     timeoutInMinutes: 15
@@ -23,7 +23,7 @@ jobs:
             timeoutInMinutes: 5
             onTimeout: 'reject'
 
-  - deployment: deployArtifactsToAppService
+  - deployment:
     displayName: 'Artifacts to App Services'
     dependsOn: manualValidation
     pool:
