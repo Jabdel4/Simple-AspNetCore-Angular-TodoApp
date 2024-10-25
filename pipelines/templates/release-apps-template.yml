@@ -63,7 +63,7 @@ jobs:
             azureSubscription: '$(azServiceConnection)'
             appType: 'webAppLinux'
             appName: 'api-wapp-todoapp'
-            package: '$(Pipeline.Workspace)/api.zip'
+            package: '$(Pipeline.Workspace)/TodoAppBackend.zip'
             runtimeStack: 'DOTNETCORE|7.0'
         - task: AzureWebApp@1
           displayName: 'Deploy Client'
