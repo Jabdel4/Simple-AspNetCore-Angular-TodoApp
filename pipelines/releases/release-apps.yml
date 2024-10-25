@@ -15,13 +15,26 @@ variables:
 - template: ../variables/variables.yml
 - group: serviceConnections
 
-jobs:
-- template: ../templates/release-apps-template.yml
-  parameters:
-    env: 'dev'
-- template: ../templates/release-apps-template.yml
-  parameters:
-    env: 'qa'
-- template: ../templates/release-apps-template.yml
-  parameters:
-    env: 'prod'
+stages:
+- stage: dev
+  condition: eq(variables['System.debug'], true)
+  jobs:
+  - template: ../templates/release-apps-template.yml
+    parameters:
+        env: 'dev'
+- stage: qa
+  dependsOn: dev
+  condition: and(succeeded(), eq(variables['System.debug'], true))
+  jobs:
+  - template: ../templates/release-apps-template.yml
+    parameters:
+        env: 'qa'
+- stage: prod
+  dependsOn:
+  - dev
+  - qa
+  condition: and(succeeded(), eq(variables['System.debug'], true))
+  jobs:
+  - template: ../templates/release-apps-template.yml
+    parameters:
+        env: 'prod'
