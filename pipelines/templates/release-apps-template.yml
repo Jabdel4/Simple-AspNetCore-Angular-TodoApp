@@ -8,7 +8,7 @@ parameters:
   - prod
 
 jobs:
-  - job: manualValidation
+  - job:
     displayName: 'Wait for Manual Validation'
     pool: server
     timeoutInMinutes: 15
@@ -25,7 +25,6 @@ jobs:
 
   - deployment:
     displayName: 'Artifacts to App Services'
-    dependsOn: manualValidation
     pool:
         vmImage: $(vmImage)
     environment: todoapp-${{ parameters.env }}
