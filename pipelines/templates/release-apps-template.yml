@@ -8,7 +8,7 @@ parameters:
   - prod
 
 jobs:
-  - job:
+  - job: manualValidation
     displayName: 'Wait for Manual Validation'
     pool: server
     timeoutInMinutes: 15
