@@ -2,8 +2,11 @@ name: release-apps
 
 resources:
     pipelines:
-    - pipeline: apps-resources
-      source: Jabdel4.TodoApp.Build.Apps
+    - pipeline: dropClient
+      source: Jabdel4.TodoApp.Build.Client
+      trigger: true # To trigger a run when any run of the referenced pipeline completes    
+    - pipeline: dropApi
+      source: Jabdel4.TodoApp.Build.Api
       trigger: true # To trigger a run when any run of the referenced pipeline completes
     
 trigger: none

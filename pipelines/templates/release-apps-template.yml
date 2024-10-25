@@ -51,7 +51,7 @@ jobs:
                     azureSubscription: '$(azServiceConnection)'
                     appType: 'webAppLinux'
                     appName: 'api-wapp-todoapp'
-                    package: '$(Pipeline.Workspace)/apps-resources/TodoAppBackend.zip'
+                    package: '$(Pipeline.Workspace)/dropApi/api/TodoAppBackend.zip'
                     runtimeStack: 'DOTNETCORE|7.0'
                 - task: AzureWebApp@1
                   displayName: 'Deploy Client'
@@ -59,7 +59,7 @@ jobs:
                     azureSubscription: '$(azServiceConnection)'
                     appType: 'webAppLinux'
                     appName: 'client-wapp-todoapp'
-                    package: '$(Pipeline.Workspace)/apps-resources/client.zip'
+                    package: '$(Pipeline.Workspace)/dropClient/client/client.zip'
                     runtimeStack: 'NODE|18-LTS'
                 - task: AzureAppServiceManage@0
                   displayName: 'Start Api App Service'
