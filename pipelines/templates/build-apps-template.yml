@@ -7,7 +7,7 @@ steps:
         definition: '6'
         buildVersionToDownload: 'latest'
         artifactName: 'client'
-        targetPath: '$(Pipeline.Workspace)'    
+        targetPath: '$(Pipeline.Workspace)/apps-resources'    
     - task: DownloadPipelineArtifact@2
       displayName: 'Download Api artifact'
       inputs:
@@ -16,4 +16,4 @@ steps:
         definition: '5'
         buildVersionToDownload: 'latest'
         artifactName: 'api'
-        targetPath: '$(Pipeline.Workspace)'  
+        targetPath: '$(Pipeline.Workspace)/apps-resources'  

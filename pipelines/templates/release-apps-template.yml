@@ -15,49 +15,52 @@ jobs:
             timeoutInMinutes: 5
             onTimeout: 'reject'
 
-  - job: deployArtifactsToAppService
+  - deployment: deployArtifactsToAppService
     displayName: 'Artifacts to App Services'
     dependsOn: manualValidation
     pool:
         vmImage: $(vmImage)
-    steps:
-        - task: AzureAppServiceManage@0
-          displayName: 'Stop Api App Service'
-          inputs:
-            azureSubscription: '$(azServiceConnection)'
-            Action: 'Stop Azure App Service'
-            WebAppName: 'api-wapp-todoapp'
-        - task: AzureAppServiceManage@0
-          displayName: 'Stop Client App Service'
-          inputs:
-            azureSubscription: '$(azServiceConnection)'
-            Action: 'Stop Azure App Service'
-            WebAppName: 'client-wapp-todoapp'
-        - task: AzureWebApp@1
-          displayName: 'Deploy API'
-          inputs:
-            azureSubscription: '$(azServiceConnection)'
-            appType: 'webAppLinux'
-            appName: 'api-wapp-todoapp'
-            package: '$(Pipeline.Workspace)/TodoAppBackend.zip'
-            runtimeStack: 'DOTNETCORE|7.0'
-        - task: AzureWebApp@1
-          displayName: 'Deploy Client'
-          inputs:
-            azureSubscription: '$(azServiceConnection)'
-            appType: 'webAppLinux'
-            appName: 'client-wapp-todoapp'
-            package: '$(Pipeline.Workspace)/client.zip'
-            runtimeStack: 'NODE|18-LTS'
-        - task: AzureAppServiceManage@0
-          displayName: 'Start Api App Service'
-          inputs:
-            azureSubscription: '$(azServiceConnection)'
-            Action: 'Start Azure App Service'
-            WebAppName: 'api-wapp-todoapp'
-        - task: AzureAppServiceManage@0
-          displayName: 'Start Client App Service'
-          inputs:
-            azureSubscription: '$(azServiceConnection)'
-            Action: 'Start Azure App Service'
-            WebAppName: 'api-wapp-todoapp'
+    strategy:
+        runOnce:
+            deploy:
+               steps:
+                - task: AzureAppServiceManage@0
+                  displayName: 'Stop Api App Service'
+                  inputs:
+                    azureSubscription: '$(azServiceConnection)'
+                    Action: 'Stop Azure App Service'
+                    WebAppName: 'api-wapp-todoapp'
+                - task: AzureAppServiceManage@0
+                  displayName: 'Stop Client App Service'
+                  inputs:
+                    azureSubscription: '$(azServiceConnection)'
+                    Action: 'Stop Azure App Service'
+                    WebAppName: 'client-wapp-todoapp'
+                - task: AzureWebApp@1
+                  displayName: 'Deploy API'
+                  inputs:
+                    azureSubscription: '$(azServiceConnection)'
+                    appType: 'webAppLinux'
+                    appName: 'api-wapp-todoapp'
+                    package: '$(Pipeline.Workspace)/apps-resources/TodoAppBackend.zip'
+                    runtimeStack: 'DOTNETCORE|7.0'
+                - task: AzureWebApp@1
+                  displayName: 'Deploy Client'
+                  inputs:
+                    azureSubscription: '$(azServiceConnection)'
+                    appType: 'webAppLinux'
+                    appName: 'client-wapp-todoapp'
+                    package: '$(Pipeline.Workspace)/apps-resources/client.zip'
+                    runtimeStack: 'NODE|18-LTS'
+                - task: AzureAppServiceManage@0
+                  displayName: 'Start Api App Service'
+                  inputs:
+                    azureSubscription: '$(azServiceConnection)'
+                    Action: 'Start Azure App Service'
+                    WebAppName: 'api-wapp-todoapp'
+                - task: AzureAppServiceManage@0
+                  displayName: 'Start Client App Service'
+                  inputs:
+                    azureSubscription: '$(azServiceConnection)'
+                    Action: 'Start Azure App Service'
+                    WebAppName: 'api-wapp-todoapp'
