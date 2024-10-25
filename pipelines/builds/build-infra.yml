@@ -4,16 +4,15 @@ trigger:
    batch: true
    paths:
        include:
-       - pipelines/infra/*
-       - pipelines/build-infra.yml
+           - pipelines/infra/*
+           - pipelines/builds/build-infra.yml
+           - pipelines/templates/build-infra-template.yml
 
 pool:
    vmImage: $(vmImage)
 
 variables:
-- template: ../variables/variables.yml
+    - template: ../variables/variables.yml
 
 steps:
-   - publish: $(workingDir)/pipelines/infra
-     displayName: 'Publish bicep'
-     artifact: resources
+   - template: ../templates/build-infra-template.yml

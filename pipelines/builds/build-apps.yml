@@ -1,0 +1,24 @@
+name: build-apps
+
+trigger:
+    batch: true
+    branches:
+        include:
+        - main
+    paths:
+        include:
+            - pipelines/templates/build-apps-template.yml
+            - pipelines/build/build-apps.yml
+        exclude:
+            - README.md
+            - .gitignore
+            - .dockerignore
+
+variables:
+- template: ../variables/variables.yml
+
+pool:
+    vmImage: $(vmImage)
+
+steps:
+- template: ../templates/build-apps-template.yml    

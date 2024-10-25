@@ -1,0 +1,19 @@
+steps:
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Client artifact'
+      inputs:
+        buildType: 'specific'
+        project: '4eb0d06e-cb70-453b-8722-6c23f0ef15d7'
+        definition: '6'
+        buildVersionToDownload: 'latest'
+        artifactName: 'client'
+        targetPath: '$(Pipeline.Workspace)'    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Api artifact'
+      inputs:
+        buildType: 'specific'
+        project: '4eb0d06e-cb70-453b-8722-6c23f0ef15d7'
+        definition: '5'
+        buildVersionToDownload: 'latest'
+        artifactName: 'api'
+        targetPath: '$(Pipeline.Workspace)'  
