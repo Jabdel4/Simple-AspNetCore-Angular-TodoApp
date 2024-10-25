@@ -2,10 +2,10 @@ name: build-api
 
 trigger:
     batch: true
-    # branches:
-    #     include:
-    #     - main
-    #     #- feature/todo-api
+    branches:
+        include:
+        - main
+        #- feature/todo-api
     paths:
         include:
         - pipelines/templates/build-api-template.yml

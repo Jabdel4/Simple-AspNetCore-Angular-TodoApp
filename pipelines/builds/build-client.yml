@@ -3,10 +3,10 @@ name: build-client
 
 trigger:
   batch: true
-  # branches:
-  #   include:
-  #   - main
-  #   #- feature/todo-client
+  branches:
+    include:
+    - main
+    #- feature/todo-client
   paths:
     include:
     - pipelines/templates/build-client-template.yml
