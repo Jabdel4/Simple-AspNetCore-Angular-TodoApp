@@ -2,7 +2,7 @@ jobs:
   - job: Artifacts
     displayName: 'Download Artifacts'
     pool:
-        vmImage:($vmImage)
+        vmImage: $(vmImage)
     steps:
     - task: DownloadPipelineArtifact@2
       displayName: 'Client artifact'
@@ -43,7 +43,7 @@ jobs:
     displayName: 'Artifacts to App Services'
     dependsOn: manualValidation
     pool:
-        vmImage: ($vmImage)
+        vmImage: $(vmImage)
     steps:
         - task: AzureAppServiceManage@0
           displayName: 'Stop Api App Service'
