@@ -1,5 +1,14 @@
 name: release-apps
 
+parameters:
+- name: test
+  type: string
+  default: a
+  values:
+  - a
+  - b
+  - c
+
 resources:
     pipelines:
     - pipeline: dropClient
