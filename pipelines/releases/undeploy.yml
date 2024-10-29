@@ -3,7 +3,6 @@ name: delete-resources
 parameters:
 - name: env
   type: string
-  default: dev
   values:
   - dev
   - qa
