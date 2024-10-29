@@ -1,4 +1,4 @@
-using 'resources.dev.bicep'
+using 'resources.prod.bicep'
 
 @allow([
   'B1',
@@ -9,7 +9,7 @@ using 'resources.dev.bicep'
   'S3',
   'F1' //Free
 ])
-param sku  = 'F1' // The SKU of App Service Plan
+param sku  = 'S1' // The SKU of App Service Plan
 
 @allowed([
   'node|18-lts',
@@ -34,9 +34,10 @@ param apiLinuxFxVersion  = 'dotnetcore|7.0' // The runtime stack of api web app
   'southafricanorth',
   'southafricaeast',
   'westus',
-  'eastus'
+  'eastus',
+  'canadaeast'
 ])
-param location  = 'southafricanorth'
+param location  = 'eastus'
 
 param clientWebSiteName = toLower('client-wapp-${prefix}-${suffix}')
 
@@ -55,4 +56,4 @@ param apiApplicationInsightsName = toLower('${prefix}-${suffix}-api-appi')
 
 var prefix = 'todoApp'
 
-var suffix = 'dev'
+var suffix = 'prod'
