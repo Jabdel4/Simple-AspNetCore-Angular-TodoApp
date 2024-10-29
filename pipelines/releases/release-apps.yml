@@ -25,13 +25,13 @@ variables:
 - group: serviceConnections
 
 stages:
-${{ if eq(parameters.env, 'dev')}}:
-- stage: ${{ paramaters.env }}-stage
-  condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
-  jobs:
-  - template: ../templates/release-apps-template.yml
-    parameters:
-        env: ${{ paramaters.env }}
+- ${{ if eq(parameters.env, 'dev')}}:
+    - stage: ${{ paramaters.env }}-stage
+      condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
+      jobs:
+      - template: ../templates/release-apps-template.yml
+        parameters:
+            env: ${{ paramaters.env }}
 
 # ${{ elseif eq(parameters.env, 'qa')}}:
 # - stage: ${{ paramaters.env }}-stage
