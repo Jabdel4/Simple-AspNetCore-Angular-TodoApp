@@ -1,12 +1,3 @@
-# parameters:
-# - name: env
-#   type: string
-#   default: dev
-#   values:
-#   - dev
-#   - qa
-#   - prod
-
 jobs:
   - job:
     displayName: 'Wait for Manual Validation'
@@ -27,7 +18,7 @@ jobs:
     displayName: 'Artifacts to App Services'
     pool:
         vmImage: $(vmImage)
-    environment: todoapp-${{ parameters.env }}
+    environment: todoapp-$(env)
     strategy:
         runOnce:
             deploy:
