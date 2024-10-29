@@ -26,7 +26,7 @@ variables:
 stages:
 - ${{ if eq(parameters.Environment, 'dev')}}:
     - stage: ${{ parameters.Environment }}-stage
-      condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
+      condition: and(eq(variables['Build.SourceBranchName'], 'main'), eq(variables['System.debug'], true))
       jobs:
       - template: ../templates/release-apps-template.yml
         parameters:
