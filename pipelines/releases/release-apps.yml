@@ -24,9 +24,7 @@ variables:
 - template: ../variables/variables.${{ parameters.env }}.yml
 - group: serviceConnections
 
-#TODO: Implement conditions (if env = 'dev', then...)
-## Create differents environments variables
-${{ if eq(parameters['env'], 'dev')}}:
+${{ if eq(parameters.env, 'dev')}}:
 stages:
 - stage: ${{ paramaters.env }}-stage
   condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
@@ -35,7 +33,7 @@ stages:
     parameters:
         env: ${{ paramaters.env }}
 
-${{ elseif eq(parameters['env'], 'qa')}}:
+${{ elseif eq(parameters.env, 'qa')}}:
 - stage: ${{ paramaters.env }}-stage
   dependsOn: dev
   condition: and(succeeded(), eq(variables['System.debug'], true))
@@ -44,7 +42,7 @@ ${{ elseif eq(parameters['env'], 'qa')}}:
     parameters:
         env: ${{ paramaters.env }}
 
-${{ elseif eq(parameters['env'], 'prod')}}:
+${{ elseif eq(parameters.env, 'prod')}}:
 - stage: ${{ paramaters.env }}-stage
   dependsOn:
   - dev
