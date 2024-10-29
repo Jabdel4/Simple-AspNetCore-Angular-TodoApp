@@ -21,7 +21,7 @@ pool:
    vmImage: $(vmImage)
 
 variables:
-    - template: ../variables/variables.${{ paramaters.Environment }}.yml
+    - template: ../variables/variables.${{ parameters.Environment }}.yml
 
 steps:
    - template: ../templates/build-infra-template.yml
