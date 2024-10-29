@@ -33,31 +33,31 @@ stages:
         parameters:
             env: ${{ paramaters.env }}
 
-# ${{ elseif eq(parameters.env, 'qa')}}:
-# - stage: ${{ paramaters.env }}-stage
-#   dependsOn: dev
-#   condition: and(succeeded(), eq(variables['System.debug'], true))
-#   jobs:
-#   - template: ../templates/release-apps-template.yml
-#     parameters:
-#         env: ${{ paramaters.env }}
+- ${{ elseif eq(parameters.env, 'qa')}}:
+    - stage: ${{ paramaters.env }}-stage
+      dependsOn: dev
+      condition: and(succeeded(), eq(variables['System.debug'], true))
+      jobs:
+      - template: ../templates/release-apps-template.yml
+        parameters:
+            env: ${{ paramaters.env }}
 
-# ${{ elseif eq(parameters.env, 'prod')}}:
-# - stage: ${{ paramaters.env }}-stage
-#   dependsOn:
-#   - dev
-#   - qa
-#   condition: and(succeeded(), eq(variables['System.debug'], true))
-#   jobs:
-#   - template: ../templates/release-apps-template.yml
-#     parameters:
-#         env: ${{ paramaters.env }}
+- ${{ elseif eq(parameters.env, 'prod')}}:
+    - stage: ${{ paramaters.env }}-stage
+      dependsOn:
+      - dev
+      - qa
+      condition: and(succeeded(), eq(variables['System.debug'], true))
+      jobs:
+      - template: ../templates/release-apps-template.yml
+        parameters:
+            env: ${{ paramaters.env }}
 
-# ${{ else }}:
-# - stage: foo
-#   displayName: Parameter not found
-#   jobs:
-#   - job: foo-pm
-#     displayName: Error
-#     steps:
-#     - script: echo "Paremeter Not Found. Admitted values are {'dev', 'qa', 'prod'}"
+- ${{ else }}:
+    - stage: foo
+      displayName: Parameter not found
+      jobs:
+      - job: foo-pm
+        displayName: Error
+        steps:
+        - script: echo "Paremeter Not Found. Admitted values are {'dev', 'qa', 'prod'}"
