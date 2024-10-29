@@ -1,5 +1,14 @@
 name: build-api
 
+parameters:
+- name: env
+  type: string
+  default: dev
+  values:
+  - dev
+  - qa
+  - prod
+
 trigger:
     batch: true
     branches:
