@@ -3,7 +3,6 @@ name: build-client
 parameters:
 - name: Environment
   type: string
-  default: ''
   values:
   - dev
   - qa
@@ -14,7 +13,6 @@ trigger:
   branches:
     include:
     - main
-    #- feature/todo-client
   paths:
     include:
     - pipelines/templates/build-client-template.yml
