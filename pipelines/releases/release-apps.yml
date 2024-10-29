@@ -24,8 +24,8 @@ variables:
 - template: ../variables/variables.${{ parameters.env }}.yml
 - group: serviceConnections
 
-${{ if eq(parameters.env, 'dev')}}:
 stages:
+${{ if eq(parameters.env, 'dev')}}:
 - stage: ${{ paramaters.env }}-stage
   condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
   jobs:
