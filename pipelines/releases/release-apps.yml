@@ -30,7 +30,7 @@ stages:
       jobs:
       - template: ../templates/release-apps-template.yml
         parameters:
-            Environment: ${{ paramaters.Environment }}
+            Environment: ${{ parameters.Environment }}
 
 - ${{ elseif eq(parameters.Environment, 'qa')}}:
     - stage: ${{ parameters.Environment }}-stage
@@ -39,7 +39,7 @@ stages:
       jobs:
       - template: ../templates/release-apps-template.yml
         parameters:
-            Environment: ${{ paramaters.Environment }}
+            Environment: ${{ parameters.Environment }}
 
 - ${{ elseif eq(parameters.Environment, 'prod')}}:
     - stage: ${{ parameters.Environment }}-stage
