@@ -25,7 +25,7 @@ variables:
 
 stages:
 - ${{ if eq(parameters.Environment, 'dev')}}:
-    - stage: ${{ parameters.Environment }}-stage
+    - stage: ${{ parameters.Environment }}_stage
       condition: and(eq(variables['Build.SourceBranchName'], 'main'), eq(variables['System.debug'], true))
       jobs:
       - template: ../templates/release-apps-template.yml
@@ -33,7 +33,7 @@ stages:
             Environment: ${{ parameters.Environment }}
 
 - ${{ elseif eq(parameters.Environment, 'qa')}}:
-    - stage: ${{ parameters.Environment }}-stage
+    - stage: ${{ parameters.Environment }}_stage
       dependsOn: dev
       condition: and(succeeded(), eq(variables['System.debug'], true))
       jobs:
@@ -42,7 +42,7 @@ stages:
             Environment: ${{ parameters.Environment }}
 
 - ${{ elseif eq(parameters.Environment, 'prod')}}:
-    - stage: ${{ parameters.Environment }}-stage
+    - stage: ${{ parameters.Environment }}_stage
       dependsOn:
       - dev
       - qa
