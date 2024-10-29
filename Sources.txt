@@ -12,4 +12,5 @@ https://learn.microsoft.com/en-us/azure/devops/pipelines/process/deployment-jobs
 https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/resources-pipelines-pipeline?view=azure-pipelines
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops&source=recommendations
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/conditions?view=azure-devops
+https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops#conditional-insertion
 
