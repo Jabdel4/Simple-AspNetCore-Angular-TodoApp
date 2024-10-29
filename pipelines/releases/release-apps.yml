@@ -3,7 +3,6 @@ name: release-apps
 parameters:
 - name: env
   type: string
-  default: dev
   values:
   - dev
   - qa

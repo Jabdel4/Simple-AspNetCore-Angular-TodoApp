@@ -13,4 +13,6 @@ https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/resources-p
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops&source=recommendations
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/conditions?view=azure-devops
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops#conditional-insertion
+https://learn.microsoft.com/en-us/azure/devops/pipelines/process/template-parameters?view=azure-devops
+
 
