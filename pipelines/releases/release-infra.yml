@@ -23,5 +23,3 @@ variables:
 
 jobs:
 - template: ../templates/release-infra-template.yml
-  # parameters:
-  #   azServiceConnection: '$(azServiceConnection)' # Value is in the variable group
