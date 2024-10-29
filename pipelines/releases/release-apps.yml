@@ -28,7 +28,7 @@ variables:
 ## Create differents environments variables
 ${{ if eq(parameters['env'], 'dev')}}:
 stages:
-- stage: dev
+- stage: ${{ paramaters.env }}-stage
   condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
   jobs:
   - template: ../templates/release-apps-template.yml
@@ -36,7 +36,7 @@ stages:
         env: ${{ paramaters.env }}
 
 ${{ elseif eq(parameters['env'], 'qa')}}:
-- stage: qa
+- stage: ${{ paramaters.env }}-stage
   dependsOn: dev
   condition: and(succeeded(), eq(variables['System.debug'], true))
   jobs:
@@ -44,8 +44,8 @@ ${{ elseif eq(parameters['env'], 'qa')}}:
     parameters:
         env: ${{ paramaters.env }}
 
-${{ elseif eq (parameters['env'], 'dev')}}:
-- stage: prod
+${{ elseif eq(parameters['env'], 'prod')}}:
+- stage: ${{ paramaters.env }}-stage
   dependsOn:
   - dev
   - qa
