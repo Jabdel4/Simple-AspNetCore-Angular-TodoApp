@@ -3,7 +3,6 @@ name: build-infra
 parameters:
 - name: Environment
   type: string
-  default: dev
   values:
   - dev
   - qa

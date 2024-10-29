@@ -3,7 +3,6 @@ name: build-client
 parameters:
 - name: Environment
   type: string
-  default: dev
   values:
   - dev
   - qa

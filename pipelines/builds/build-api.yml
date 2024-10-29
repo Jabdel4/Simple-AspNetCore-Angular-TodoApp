@@ -3,7 +3,6 @@ name: build-api
 parameters:
 - name: Environment
   type: string
-  default: dev
   values:
   - dev
   - qa
