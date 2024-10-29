@@ -7,7 +7,10 @@ variables:
     location: southafricanorth
     workingDir: $(System.DefaultWorkingDirectory)
     env: dev # Options: 'dev', 'qa', 'prod'
-    ${{ if variables.env in('dev', 'qa', 'prod') }}:
-        resourceGroupName: $(prefix)-rg-$(env)
-        templateFilePath: '$(workingDir)/pipelines/infra/$(env)/resources.$(env).bicep'
-        templateParametersFilePath: '$(workingDir)/pipelines/infra/$(env)/resources.$(env).bicepparam'
+
+
+    # ${{ if variables.env in('dev', 'qa', 'prod') }}:
+    ${{ if eq(variables.env, 'dev') }}:
+    resourceGroupName: $(prefix)-rg-$(env)
+    templateFilePath: '$(workingDir)/pipelines/infra/$(env)/resources.$(env).bicep'
+    templateParametersFilePath: '$(workingDir)/pipelines/infra/$(env)/resources.$(env).bicepparam'
