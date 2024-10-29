@@ -15,7 +15,7 @@ trigger:
             - .dockerignore
 
 variables:
-- template: ../variables/variables.yml
+- template: ../variables/variables.$(env).yml
 
 pool:
     vmImage: $(vmImage)

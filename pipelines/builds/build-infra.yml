@@ -12,7 +12,7 @@ pool:
    vmImage: $(vmImage)
 
 variables:
-    - template: ../variables/variables.yml
+    - template: ../variables/variables.$(env).yml
 
 steps:
    - template: ../templates/build-infra-template.yml
