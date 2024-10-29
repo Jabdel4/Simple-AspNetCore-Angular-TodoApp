@@ -9,7 +9,6 @@ jobs:
           inputs:
             notifyUsers: |
                 jorisbootcamp@outlook.com
-                jobalos95@outlook.com
             instructions: 'Do we need to deploy ? The App services should be stopped.'
             timeoutInMinutes: 5
             onTimeout: 'reject'

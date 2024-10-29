@@ -14,7 +14,6 @@
           inputs:
             notifyUsers: |
                 jorisbootcamp@outlook.com
-                jobalos95@outlook.com
             instructions: 'Please, ensure that bicep files are good before the provisioning.'
             timeoutInMinutes: 5
             onTimeout: 'reject'

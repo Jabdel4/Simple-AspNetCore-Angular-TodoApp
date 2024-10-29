@@ -10,7 +10,7 @@ trigger:
         - pipelines/templates/release-infra-template.yml
 
 variables:
-- template: ../variables/variables.yml
+- template: ../variables/variables.$(env).yml
 - group: serviceConnections
 
 jobs:

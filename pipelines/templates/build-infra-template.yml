@@ -1,4 +1,4 @@
 steps:
-   - publish: $(workingDir)/pipelines/infra
+   - publish: $(workingDir)/pipelines/infra/$(env)
      displayName: 'Publish bicep'
      artifact: resources
