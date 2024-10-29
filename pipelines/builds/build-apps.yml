@@ -1,5 +1,14 @@
 name: build-apps
 
+parameters:
+- name: env
+  type: string
+  default: dev
+  values:
+  - dev
+  - qa
+  - prod
+
 trigger:
     batch: true
     branches:
@@ -15,7 +24,7 @@ trigger:
             - .dockerignore
 
 variables:
-- template: ../variables/variables.$(env).yml
+- template: ../variables/variables.${{ parameters.env }}.yml
 
 pool:
     vmImage: $(vmImage)

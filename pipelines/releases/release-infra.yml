@@ -1,5 +1,14 @@
 name: release-infra
 
+parameters:
+- name: env
+  type: string
+  default: dev
+  values:
+  - dev
+  - qa
+  - prod
+
 trigger:
     batch: true
     branches:
@@ -10,7 +19,7 @@ trigger:
         - pipelines/templates/release-infra-template.yml
 
 variables:
-- template: ../variables/variables.$(env).yml
+- template: ../variables/variables.${{ parameters.env}}.yml
 - group: serviceConnections
 
 jobs:

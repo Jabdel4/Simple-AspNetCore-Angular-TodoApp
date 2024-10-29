@@ -1,9 +1,18 @@
 name: delete-resources
 
+parameters:
+- name: env
+  type: string
+  default: dev
+  values:
+  - dev
+  - qa
+  - prod
+
 trigger: none
 
 variables:
-- template: ../variables/variables.$(env).yml
+- template: ../variables/variables.${{ parameters.env }}.yml
 - group: serviceConnections
 
 pool:

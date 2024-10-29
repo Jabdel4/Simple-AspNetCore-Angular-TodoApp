@@ -21,7 +21,7 @@ resources:
 trigger: none
 
 variables:
-- template: ../variables/variables.$(env).yml
+- template: ../variables/variables.${{ parameters.env }}.yml
 - group: serviceConnections
 
 #TODO: Implement conditions (if env = 'dev', then...)

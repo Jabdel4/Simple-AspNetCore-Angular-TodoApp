@@ -1,5 +1,13 @@
 name: build-client
 
+parameters:
+- name: env
+  type: string
+  default: dev
+  values:
+  - dev
+  - qa
+  - prod
 
 trigger:
   batch: true
@@ -16,7 +24,7 @@ trigger:
     - .gitignore
 
 variables:
-- template: ../variables/variables.$(env).yml
+- template: ../variables/variables.${{ parameters.env }}.yml
 
 jobs:
 - template: ../templates/build-client-template.yml

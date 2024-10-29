@@ -1,9 +1,4 @@
-# parameters:
-# - name: azServiceConnection
-#   type: string
-#   default: ''
-
-  jobs:
+ jobs:
   - job: manualValidation
     displayName: 'Wait for Manual Validation'
     pool: server

@@ -1,5 +1,14 @@
 name: build-infra
 
+parameters:
+- name: env
+  type: string
+  default: dev
+  values:
+  - dev
+  - qa
+  - prod
+
 trigger:
    batch: true
    paths:
@@ -12,7 +21,7 @@ pool:
    vmImage: $(vmImage)
 
 variables:
-    - template: ../variables/variables.$(env).yml
+    - template: ../variables/variables.${{ paramaters.env }}.yml
 
 steps:
    - template: ../templates/build-infra-template.yml
