@@ -46,16 +46,4 @@
             csmParametersFile: "$(templateParametersFilePath)"
             deploymentMode: "Incremental"
             deploymentName: "DeployPipelineTemplate"
-
-# - stage: APP
-#   condition: onSucceeded('RESOURCES')
-#   jobs:
-#   - job: API
-#     displayName: 'Deploy the API'
-#     steps:
-#         - task:
-#   - job: CLIENT
-#     displayName: 'Deploy the Client'
-#     steps:
-#       - task:
       
