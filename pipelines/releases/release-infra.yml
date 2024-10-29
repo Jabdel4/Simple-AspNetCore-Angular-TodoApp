@@ -1,7 +1,7 @@
 name: release-infra
 
 parameters:
-- name: env
+- name: Environment
   type: string
   values:
   - dev
@@ -18,7 +18,7 @@ trigger:
         - pipelines/templates/release-infra-template.yml
 
 variables:
-- template: ../variables/variables.${{ parameters.env}}.yml
+- template: ../variables/variables.${{ parameters.Environment}}.yml
 - group: serviceConnections
 
 jobs:

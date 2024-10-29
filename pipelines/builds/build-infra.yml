@@ -1,7 +1,7 @@
 name: build-infra
 
 parameters:
-- name: env
+- name: Environment
   type: string
   default: dev
   values:
@@ -21,7 +21,7 @@ pool:
    vmImage: $(vmImage)
 
 variables:
-    - template: ../variables/variables.${{ paramaters.env }}.yml
+    - template: ../variables/variables.${{ paramaters.Environment }}.yml
 
 steps:
    - template: ../templates/build-infra-template.yml

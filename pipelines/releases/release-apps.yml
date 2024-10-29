@@ -1,7 +1,7 @@
 name: release-apps
 
 parameters:
-- name: env
+- name: Environment
   type: string
   values:
   - dev
@@ -20,29 +20,29 @@ resources:
 trigger: none
 
 variables:
-- template: ../variables/variables.${{ parameters.env }}.yml
+- template: ../variables/variables.${{ parameters.Environment }}.yml
 - group: serviceConnections
 
 stages:
-- ${{ if eq(parameters.env, 'dev')}}:
-    - stage: ${{ paramaters.env }}-stage
+- ${{ if eq(parameters.Environment, 'dev')}}:
+    - stage: ${{ paramaters.Environment }}-stage
       condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
       jobs:
       - template: ../templates/release-apps-template.yml
         parameters:
-            env: ${{ paramaters.env }}
+            Environment: ${{ paramaters.Environment }}
 
-- ${{ elseif eq(parameters.env, 'qa')}}:
-    - stage: ${{ paramaters.env }}-stage
+- ${{ elseif eq(parameters.Environment, 'qa')}}:
+    - stage: ${{ paramaters.Environment }}-stage
       dependsOn: dev
       condition: and(succeeded(), eq(variables['System.debug'], true))
       jobs:
       - template: ../templates/release-apps-template.yml
         parameters:
-            env: ${{ paramaters.env }}
+            Environment: ${{ paramaters.Environment }}
 
-- ${{ elseif eq(parameters.env, 'prod')}}:
-    - stage: ${{ paramaters.env }}-stage
+- ${{ elseif eq(parameters.Environment, 'prod')}}:
+    - stage: ${{ paramaters.Environment }}-stage
       dependsOn:
       - dev
       - qa
@@ -50,7 +50,7 @@ stages:
       jobs:
       - template: ../templates/release-apps-template.yml
         parameters:
-            env: ${{ paramaters.env }}
+            Environment: ${{ paramaters.Environment }}
 
 - ${{ else }}:
     - stage: foo

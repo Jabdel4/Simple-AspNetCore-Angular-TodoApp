@@ -1,7 +1,7 @@
 name: build-api
 
 parameters:
-- name: env
+- name: Environment
   type: string
   default: dev
   values:
@@ -24,7 +24,7 @@ trigger:
         - /*.gitignore
 
 variables:
-- template: ../variables/variables.${{ parameters.env }}.yml
+- template: ../variables/variables.${{ parameters.Environment }}.yml
 
 jobs:
 - template: ../templates/build-api-template.yml

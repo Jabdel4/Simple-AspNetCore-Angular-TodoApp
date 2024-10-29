@@ -1,7 +1,7 @@
 name: build-apps
 
 parameters:
-- name: env
+- name: Environment
   type: string
   default: dev
   values:
@@ -24,7 +24,7 @@ trigger:
             - .dockerignore
 
 variables:
-- template: ../variables/variables.${{ parameters.env }}.yml
+- template: ../variables/variables.${{ parameters.Environment }}.yml
 
 pool:
     vmImage: $(vmImage)

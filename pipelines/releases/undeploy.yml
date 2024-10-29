@@ -1,7 +1,7 @@
 name: delete-resources
 
 parameters:
-- name: env
+- name: Environment
   type: string
   values:
   - dev
@@ -11,7 +11,7 @@ parameters:
 trigger: none
 
 variables:
-- template: ../variables/variables.${{ parameters.env }}.yml
+- template: ../variables/variables.${{ parameters.Environment }}.yml
 - group: serviceConnections
 
 pool:

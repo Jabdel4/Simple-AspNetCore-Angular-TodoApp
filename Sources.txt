@@ -14,5 +14,6 @@ https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?vie
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/conditions?view=azure-devops
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops#conditional-insertion
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/template-parameters?view=azure-devops
+https://thomasthornton.cloud/2022/05/03/if-elseif-or-else-in-azure-devops-pipelines/
 
 
