@@ -1,13 +1,13 @@
 name: release-apps
 
 parameters:
-- name: test
+- name: env
   type: string
-  default: a
+  default: dev
   values:
-  - a
-  - b
-  - c
+  - dev
+  - qa
+  - prod
 
 resources:
     pipelines:
@@ -24,20 +24,27 @@ variables:
 - template: ../variables/variables.yml
 - group: serviceConnections
 
+#TODO: Implement conditions (if env = 'dev', then...)
+## Create differents environments variables
+${{ if eq(parameters['env'], 'dev')}}:
 stages:
 - stage: dev
-  condition: eq(variables['System.debug'], true)
+  condition: and(eq(variables['Build.SourceBranchName'], 'main', eq(variables['System.debug'], true))
   jobs:
   - template: ../templates/release-apps-template.yml
     parameters:
-        env: 'dev'
+        env: ${{ paramaters.env }}
+
+${{ elseif eq(parameters['env'], 'qa')}}:
 - stage: qa
   dependsOn: dev
   condition: and(succeeded(), eq(variables['System.debug'], true))
   jobs:
   - template: ../templates/release-apps-template.yml
     parameters:
-        env: 'qa'
+        env: ${{ paramaters.env }}
+
+${{ elseif eq (parameters['env'], 'dev')}}:
 - stage: prod
   dependsOn:
   - dev
@@ -46,4 +53,13 @@ stages:
   jobs:
   - template: ../templates/release-apps-template.yml
     parameters:
-        env: 'prod'
+        env: ${{ paramaters.env }}
+
+${{ else }}:
+- stage: foo
+  displayName: Parameter not found
+  jobs:
+  - job: foo-pm
+    displayName: Error
+    steps:
+    - script: echo "Paremeter Not Found. Admitted values are {'dev', 'qa', 'prod'}"
