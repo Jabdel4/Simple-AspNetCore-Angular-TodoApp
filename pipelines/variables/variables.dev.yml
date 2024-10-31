@@ -6,10 +6,9 @@ variables:
     #suffix: $(Build.BuildId)
     location: southafricanorth
     workingDir: $(System.DefaultWorkingDirectory)
-    env: dev # Options: 'dev', 'qa', 'prod'
+    env: 'dev' # Options: 'dev', 'qa', 'prod'
 
-
-    ${{ if variables.env in('dev', 'qa', 'prod') }}:
+    ${{ if in(variables.env, 'dev', 'qa', 'prod') }}:
     # ${{ if eq(variables.env, 'dev') }}:
       resourceGroupName: $(prefix)-rg-$(env)
       templateFilePath: '$(workingDir)/pipelines/infra/$(env)/resources.$(env).bicep'
