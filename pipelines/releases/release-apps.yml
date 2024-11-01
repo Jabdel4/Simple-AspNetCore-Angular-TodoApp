@@ -25,14 +25,14 @@ variables:
 
 stages:
 # - ${{ if eq(parameters.Environment, 'dev')}}:
-- stage: ${{ parameters.Environment }}_stage
+- stage: dev_stage
   jobs:
     - template: ../templates/release-apps-template.yml
       parameters:
         Environment: ${{ parameters.Environment }}
 
 # - ${{ elseif eq(parameters.Environment, 'qa')}}:
-- stage: ${{ parameters.Environment }}_stage
+- stage: qa_stage
   dependsOn: dev
   condition: and(succeeded(), eq(variables['System.debug'], true))
   jobs:
@@ -41,7 +41,7 @@ stages:
         Environment: ${{ parameters.Environment }}
 
 # - ${{ elseif eq(parameters.Environment, 'prod')}}:
-- stage: ${{ parameters.Environment }}_stage
+- stage: prod_stage
   dependsOn:
     - dev
     - qa
