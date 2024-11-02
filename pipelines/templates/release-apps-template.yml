@@ -61,4 +61,4 @@ jobs:
                   inputs:
                     azureSubscription: '$(azServiceConnection)'
                     Action: 'Start Azure App Service'
-                    WebAppName: 'api-wapp-todoapp-$(env)'
+                    WebAppName: 'client-wapp-todoapp-$(env)'
