@@ -1,17 +1,17 @@
 jobs:
-  - job:
-    displayName: 'Wait for Manual Validation'
-    pool: server
-    timeoutInMinutes: 15
-    steps:
-        - task: ManualValidation@0
-          displayName: 'Manual Validation'
-          inputs:
-            notifyUsers: |
-                jorisbootcamp@outlook.com
-            instructions: 'Do we need to deploy ? The App services should be stopped.'
-            timeoutInMinutes: 5
-            onTimeout: 'reject'
+  # - job:
+  #   displayName: 'Wait for Manual Validation'
+  #   pool: server
+  #   timeoutInMinutes: 15
+  #   steps:
+  #       - task: ManualValidation@0
+  #         displayName: 'Manual Validation'
+  #         inputs:
+  #           notifyUsers: |
+  #               jorisbootcamp@outlook.com
+  #           instructions: 'Do we need to deploy ? The App services should be stopped.'
+  #           timeoutInMinutes: 5
+  #           onTimeout: 'reject'
 
   - deployment:
     displayName: 'Artifacts to App Services'
