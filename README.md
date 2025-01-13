@@ -18,4 +18,4 @@ In addition, to master the usage of Git commands like pull, push, checkout, init
 
 # Contact
 
-Follow me on [LinkedIn](https://linkedin.com/in/joris-alima) and [GitHub](https://github.com/Jabdel4/)
+Follow me on [LinkedIn](https://linkedin.com/in/joris-alima) and [GitHub](https://github.com/Jabdel4/).
